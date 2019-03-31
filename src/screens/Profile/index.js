@@ -1,26 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React, {Component} from 'react';
-import { StyleSheet, Text, View} from 'react-native';
-
-type Props = {};
-export default class Profile extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-          <Text style={styles.welcome}>Profile</Text>
-        </View>
-    );
-  }
-}
-
-
+import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -39,4 +18,16 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+})
+
+export default class Profile extends Component {
+  state = {}
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Profile</Text>
+      </View>
+    )
+  }
+}
