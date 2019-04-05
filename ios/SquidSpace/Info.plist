@@ -70,6 +70,15 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>GloberBlack.ttf</string>
+		<string>GloberBold.ttf</string>
+		<string>GloberBook.ttf</string>
+		<string>GloberHeavy.ttf</string>
+		<string>GloberLight.ttf</string>
+		<string>GloberRegular.ttf</string>
+		<string>GloberSemiBold.ttf</string>
+		<string>GloberThin.ttf</string>
+		<string>GloberxBold.ttf</string>
 	</array>
 </dict>
 </plist>

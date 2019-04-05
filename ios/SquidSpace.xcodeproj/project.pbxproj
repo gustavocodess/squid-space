@@ -58,6 +58,15 @@
 		04A8E00074A44EC99C2CD16B /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71DF36A254144B1291F2DEEE /* Zocial.ttf */; };
 		F09D31C5DFC8471B9A55EC27 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 490028C74EC74474BBA445A9 /* libRNGestureHandler.a */; };
 		0601433C63ED441F830B5C2C /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 316F89D0376E4CB19A335DAE /* libRNGestureHandler-tvOS.a */; };
+		6BB19937193A471FBA64EC57 /* GloberBlack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B298DC6F4D664FAABEE09F9B /* GloberBlack.ttf */; };
+		CF6FB437894A4EC28B78917A /* GloberBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 691B39951431438182B6FDAB /* GloberBold.ttf */; };
+		71488AB90FB941EBA43EABCC /* GloberBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B9AB34674A239A8A970B /* GloberBook.ttf */; };
+		A3A6255B023949F8A8F32850 /* GloberHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E945C9A8BB9E4736A1DDEC1F /* GloberHeavy.ttf */; };
+		C0626E2A5A2249928B372CB9 /* GloberLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A7407DDF8634F78B65C84B9 /* GloberLight.ttf */; };
+		204A145E40E94B26B247A1FB /* GloberRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB504A7095EF4226835157CA /* GloberRegular.ttf */; };
+		21B676D8421F4E6AA04C9DE4 /* GloberSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7FBFADAB9A49EF98DAD32F /* GloberSemiBold.ttf */; };
+		1A3C8F3C700641F5AEEF8146 /* GloberThin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54C9398047C9481785ADC814 /* GloberThin.ttf */; };
+		408A2E057199403C9C0ADC0E /* GloberxBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 959AC42ADEBD4C0686A5AAFE /* GloberxBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -386,6 +395,15 @@
 		8AD7913A6BA74667AA8880F7 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; name = "RNGestureHandler.xcodeproj"; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		490028C74EC74474BBA445A9 /* libRNGestureHandler.a */ = {isa = PBXFileReference; name = "libRNGestureHandler.a"; path = "libRNGestureHandler.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		316F89D0376E4CB19A335DAE /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; name = "libRNGestureHandler-tvOS.a"; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B298DC6F4D664FAABEE09F9B /* GloberBlack.ttf */ = {isa = PBXFileReference; name = "GloberBlack.ttf"; path = "../src/assets/fonts/GloberBlack.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		691B39951431438182B6FDAB /* GloberBold.ttf */ = {isa = PBXFileReference; name = "GloberBold.ttf"; path = "../src/assets/fonts/GloberBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		15E9B9AB34674A239A8A970B /* GloberBook.ttf */ = {isa = PBXFileReference; name = "GloberBook.ttf"; path = "../src/assets/fonts/GloberBook.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E945C9A8BB9E4736A1DDEC1F /* GloberHeavy.ttf */ = {isa = PBXFileReference; name = "GloberHeavy.ttf"; path = "../src/assets/fonts/GloberHeavy.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1A7407DDF8634F78B65C84B9 /* GloberLight.ttf */ = {isa = PBXFileReference; name = "GloberLight.ttf"; path = "../src/assets/fonts/GloberLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FB504A7095EF4226835157CA /* GloberRegular.ttf */ = {isa = PBXFileReference; name = "GloberRegular.ttf"; path = "../src/assets/fonts/GloberRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CB7FBFADAB9A49EF98DAD32F /* GloberSemiBold.ttf */ = {isa = PBXFileReference; name = "GloberSemiBold.ttf"; path = "../src/assets/fonts/GloberSemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		54C9398047C9481785ADC814 /* GloberThin.ttf */ = {isa = PBXFileReference; name = "GloberThin.ttf"; path = "../src/assets/fonts/GloberThin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		959AC42ADEBD4C0686A5AAFE /* GloberxBold.ttf */ = {isa = PBXFileReference; name = "GloberxBold.ttf"; path = "../src/assets/fonts/GloberxBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -675,6 +693,15 @@
 				4FB6123F75D943D983F091D4 /* Octicons.ttf */,
 				994B86FAB47648C29DF97ED0 /* SimpleLineIcons.ttf */,
 				71DF36A254144B1291F2DEEE /* Zocial.ttf */,
+				B298DC6F4D664FAABEE09F9B /* GloberBlack.ttf */,
+				691B39951431438182B6FDAB /* GloberBold.ttf */,
+				15E9B9AB34674A239A8A970B /* GloberBook.ttf */,
+				E945C9A8BB9E4736A1DDEC1F /* GloberHeavy.ttf */,
+				1A7407DDF8634F78B65C84B9 /* GloberLight.ttf */,
+				FB504A7095EF4226835157CA /* GloberRegular.ttf */,
+				CB7FBFADAB9A49EF98DAD32F /* GloberSemiBold.ttf */,
+				54C9398047C9481785ADC814 /* GloberThin.ttf */,
+				959AC42ADEBD4C0686A5AAFE /* GloberxBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1141,6 +1168,15 @@
 				55B60DFA92D8496693A8F2E3 /* Octicons.ttf in Resources */,
 				4151AA88077343E4AA41BA92 /* SimpleLineIcons.ttf in Resources */,
 				04A8E00074A44EC99C2CD16B /* Zocial.ttf in Resources */,
+				6BB19937193A471FBA64EC57 /* GloberBlack.ttf in Resources */,
+				CF6FB437894A4EC28B78917A /* GloberBold.ttf in Resources */,
+				71488AB90FB941EBA43EABCC /* GloberBook.ttf in Resources */,
+				A3A6255B023949F8A8F32850 /* GloberHeavy.ttf in Resources */,
+				C0626E2A5A2249928B372CB9 /* GloberLight.ttf in Resources */,
+				204A145E40E94B26B247A1FB /* GloberRegular.ttf in Resources */,
+				21B676D8421F4E6AA04C9DE4 /* GloberSemiBold.ttf in Resources */,
+				1A3C8F3C700641F5AEEF8146 /* GloberThin.ttf in Resources */,
+				408A2E057199403C9C0ADC0E /* GloberxBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

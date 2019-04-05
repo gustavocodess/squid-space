@@ -6,12 +6,17 @@ import Notifications from '../screens/Notifications'
 import Profile from '../screens/Profile'
 
 const BottomNativation = createMaterialBottomTabNavigator({
-  Feed: { screen: Feed },
+  Feed: {
+    screen: Feed,
+  },
   Notifications: { screen: Notifications },
   Profile: { screen: Profile },
 }, {
   initialRouteName: 'Feed',
-  activeColor: '#F44336',
+  // activeColor: '#B3A53C',
+  // barStyle: {
+  //   backgroundColor: '#4B307A',
+  // },
 })
 
 export default createAppContainer(BottomNativation)

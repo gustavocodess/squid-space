@@ -8,6 +8,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "cuid": "^2.1.6",
+    "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.2",
     "react-native-gesture-handler": "^1.1.0",
@@ -15,7 +17,9 @@
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.5.1",
     "react-navigation-material-bottom-tabs": "^1.0.0",
-    "react-redux": "^6.0.1"
+    "react-redux": "^6.0.1",
+    "react-with-styles": "^3.2.1",
+    "react-with-styles-interface-react-native": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
@@ -34,5 +38,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets":["./src/assets/fonts/"]
   }
 }
