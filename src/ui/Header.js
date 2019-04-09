@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Appbar } from 'react-native-paper'
+import { withNavigation } from 'react-navigation'
 
-export default class Header extends Component {
+class Header extends Component {
   goBack = () => console.log('Went back')
 
   onSearch = () => console.log('Searching')
@@ -9,6 +10,7 @@ export default class Header extends Component {
   _onMore = () => console.log('Shown more')
 
   render() {
+    // console.log('NAVIGATIONN PROPS AQUI ', this.props)
     return (
       <Appbar.Header>
         {/* <Appbar.BackAction
@@ -24,3 +26,5 @@ export default class Header extends Component {
     )
   }
 }
+
+export default Header

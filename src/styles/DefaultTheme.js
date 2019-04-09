@@ -15,6 +15,8 @@ export default {
     secDark: '#8F811B',
     secDarker: '#635702',
     white: '#fff',
+    black: '#131313',
+    alto: '#979797',
   },
   fontSize: {
     f0: 10,

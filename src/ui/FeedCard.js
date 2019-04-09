@@ -2,6 +2,8 @@ import * as React from 'react'
 import { View, Text, Image } from 'react-native'
 import { Avatar } from 'react-native-paper'
 import PropTypes from 'prop-types'
+import { withNavigation } from 'react-navigation'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { withStyles } from '../styles'
 
 const manAvatar = require('../assets/images/man.jpg')
@@ -31,30 +33,45 @@ const mediaTypeMap = {
 
 
 const FeedCard = ({
-  author, date, title, description, mediaType, styles,
+  author, date, title, description, mediaType, styles, navigation,
 }) => (
-  <View style={styles.container}>
-    <View style={styles.mediaContainer}>
-      <View style={styles.mediaAvatar}>
-        <Image
-          source={mediaTypeMap[mediaType].media}
-          style={styles.media}
-        />
+  <TouchableOpacity
+    onPress={() => {
+      navigation.push('PostDetail', {
+        author, date, title, description, mediaType,
+      })
+    }}
+  >
+    <View
+      style={styles.container}
+    >
+      <View style={styles.mediaContainer}>
+        <View style={styles.mediaAvatar}>
+          <Image
+            source={mediaTypeMap[mediaType].media}
+            style={styles.media}
+          />
+        </View>
+        <Text style={styles.mediaLabel}>
+          {mediaTypeMap[mediaType].label}
+        </Text>
       </View>
-      <Text style={styles.mediaLabel}>
-        {mediaTypeMap[mediaType].label}
+      <Text style={styles.title}>{title}</Text>
+      <Text
+        numberOfLines={2}
+        style={styles.description}
+      >
+        {description}
       </Text>
+      <View style={styles.authorContainer}>
+        <Avatar.Image size={36} source={manAvatar} />
+        <Text style={styles.authorName}>{author}</Text>
+      </View>
+      <View style={styles.footer}>
+        <Text style={styles.date}>{date}</Text>
+      </View>
     </View>
-    <Text style={styles.title}>{title}</Text>
-    <Text>{description}</Text>
-    <View style={styles.authorContainer}>
-      <Avatar.Image size={36} source={manAvatar} />
-      <Text style={styles.authorName}>{author}</Text>
-    </View>
-    <View style={styles.footer}>
-      <Text style={styles.date}>{date}</Text>
-    </View>
-  </View>
+  </TouchableOpacity>
 )
 
 FeedCard.propTypes = {
@@ -64,13 +81,14 @@ FeedCard.propTypes = {
   author: PropTypes.string.isRequired,
   styles: PropTypes.object.isRequired,
   mediaType: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired,
 }
 
 FeedCard.defaultProps = {
   description: '',
 }
 
-export default withStyles(({
+const sFeedCard = withStyles(({
   color, family, fontSize, wWidth,
 }) => ({
   container: {
@@ -133,4 +151,9 @@ export default withStyles(({
     marginTop: 4,
     fontFamily: family.regular,
   },
+  description: {
+    width: wWidth * 0.6,
+  },
 }))(FeedCard)
+
+export default withNavigation(sFeedCard)

@@ -6,6 +6,7 @@
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/button-has-type": "off",
     "react/destructuring-assignment": "off",
+    "react/forbid-prop-types": "off",
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
     "jsx-a11y/label-has-for": "off",

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper'
+import { Provider } from 'react-redux'
 import MainNavigator from './src/navigators/MainNavigator'
 import Header from './src/ui/Header'
+import store from './src/state/store'
 
 const theme = {
   ...DefaultTheme,
@@ -17,10 +19,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <PaperProvider theme={theme}>
-        <Header />
-        <MainNavigator />
-      </PaperProvider>
+      <Provider store={store}>
+        <PaperProvider theme={theme}>
+          <Header />
+          <MainNavigator />
+        </PaperProvider>
+      </Provider>
     )
   }
 }
