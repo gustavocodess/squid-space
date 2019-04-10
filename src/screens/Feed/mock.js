@@ -15,7 +15,7 @@ export default [
   },
   {
     title: 'THIRD content to public',
-    type: 'PDF',
+    type: 'BOOK',
     author: 'Marcos Prates',
     date: '12/01/2019 às 08:09',
     description: 'Primeiro conteúdo vai aqui... kdopasdksapdksopadkaopsakodpsdkoasd',

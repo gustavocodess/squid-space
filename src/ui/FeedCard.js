@@ -21,7 +21,7 @@ const mediaTypeMap = {
     media: video,
     label: 'Assistir vídeo',
   },
-  PDF: {
+  BOOK: {
     media: book,
     label: 'Ver artigo',
   },

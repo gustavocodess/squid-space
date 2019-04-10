@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import cuid from 'cuid'
-import { StyleSheet, Text, View } from 'react-native'
-import { Button } from 'react-native-paper'
+import { StyleSheet, View, FlatList } from 'react-native'
 
 import FeedCard from '../../ui/FeedCard'
 
@@ -32,9 +31,9 @@ export default class Feed extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Text style={styles.welcome}>Feed</Text> */}
-        {
-          cards.map(item => (
+        <FlatList
+          data={cards.map(item => ({ ...item, key: cuid() }))}
+          renderItem={({ item }) => (
             <FeedCard
               title={item.title}
               description={item.description}
@@ -43,8 +42,8 @@ export default class Feed extends Component {
               date={item.date}
               key={cuid()}
             />
-          ))
-        }
+          )}
+        />
       </View>
     )
   }

@@ -3,6 +3,9 @@ package com.squidspace;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.guichaguri.trackplayer.TrackPlayer;
+import org.wonday.pdf.RCTPdfView;
+import com.RNFetchBlob.RNFetchBlobPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 import com.brentvatne.react.ReactVideoPackage;
@@ -28,6 +31,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new TrackPlayer(),
+            new RCTPdfView(),
+            new RNFetchBlobPackage(),
             new ReactNativeConfigPackage(),
             new ReactNativeYouTube(),
             new ReactVideoPackage(),
