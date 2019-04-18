@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { View, Text, Image } from 'react-native'
 import { Avatar } from 'react-native-paper'
+import moment from 'moment'
 import PropTypes from 'prop-types'
 import { withNavigation } from 'react-navigation'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { withStyles } from '../styles'
 
-const manAvatar = require('../assets/images/man.jpg')
 const audio = require('../assets/images/headphones.png')
 const video = require('../assets/images/youtube.png')
 const book = require('../assets/images/open-book.png')
@@ -33,12 +33,12 @@ const mediaTypeMap = {
 
 
 const FeedCard = ({
-  author, date, title, description, mediaType, styles, navigation,
+  author, date, title, description, mediaType, styles, navigation, postId,
 }) => (
   <TouchableOpacity
     onPress={() => {
       navigation.push('PostDetail', {
-        author, date, title, description, mediaType,
+        author, date, title, description, mediaType, postId,
       })
     }}
   >
@@ -64,11 +64,15 @@ const FeedCard = ({
         {description}
       </Text>
       <View style={styles.authorContainer}>
-        <Avatar.Image size={36} source={manAvatar} />
-        <Text style={styles.authorName}>{author}</Text>
+        <Avatar.Image size={36} source={{ uri: author.avatarPath }} />
+        <Text style={styles.authorName}>{author.name}</Text>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.date}>{date}</Text>
+        <Text style={styles.date}>
+          {
+            `${moment(date).format('DD/MM/YYYY')} às ${moment(date).format('HH:mm:ss')}`
+          }
+        </Text>
       </View>
     </View>
   </TouchableOpacity>
@@ -78,10 +82,11 @@ FeedCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   date: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  author: PropTypes.object.isRequired,
   styles: PropTypes.object.isRequired,
   mediaType: PropTypes.string.isRequired,
   navigation: PropTypes.object.isRequired,
+  postId: PropTypes.string.isRequired,
 }
 
 FeedCard.defaultProps = {

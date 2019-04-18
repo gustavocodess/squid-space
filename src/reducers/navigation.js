@@ -1,6 +1,9 @@
-const initialState = null
+import { Navigator } from '../navigators/MainNavigator'
 
-export default (state = initialState, { type, payload }) => {
+const defaultScreen = Navigator.router.getActionForPathAndParams('Feed')
+const initialNavState = Navigator.router.getStateForAction(defaultScreen)
+
+export default (state = initialNavState, { type, payload }) => {
   switch (type) {
     default:
       return state

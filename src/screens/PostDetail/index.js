@@ -4,19 +4,25 @@ import {
 } from 'react-native'
 import get from 'lodash.get'
 import PropTypes from 'prop-types'
-import { Avatar, Button } from 'react-native-paper'
+import moment from 'moment'
+import { Avatar } from 'react-native-paper'
 // import Video from 'react-native-video'
 import YouTube from 'react-native-youtube'
 import Pdf from 'react-native-pdf'
 import Config from 'react-native-config'
+import { graphql } from 'react-apollo'
 import AudioPlayer from '../../ui/AudioPlayer'
 import { withStyles } from '../../styles'
+import { getPostById } from '../../queries/post'
 
-const manAvatar = require('../../assets/images/man.jpg')
+
 const post = require('../../assets/images/react-native.png')
 
 class PostDetail extends Component {
   state = {}
+
+  componentDidMount() {
+  }
 
   onBuffer = () => {
     console.log('BUFFERED ')
@@ -93,6 +99,8 @@ class PostDetail extends Component {
       author,
       date,
     } = params
+
+    console.log('POST DETAILS PROPS ', this.props)
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>
@@ -105,21 +113,15 @@ class PostDetail extends Component {
         <View style={{ marginTop: 36 }}>
           <Text style={styles.label}>Publicado por:</Text>
           <View style={styles.footer}>
-            <Avatar.Image size={36} source={manAvatar} />
+            <Avatar.Image size={36} source={{ uri: author.avatarPath }} />
             <View style={{ marginLeft: 16 }}>
-              <Text style={styles.authorName}>{author}</Text>
+              <Text style={styles.authorName}>{author.name}</Text>
               <Text style={styles.date}>
-                {`às ${date}`}
+                {`às ${moment(date).format('DD/MM/YYYY HH:mm:ss')}`}
               </Text>
             </View>
           </View>
         </View>
-        <Button
-          onPress={() => this.props.navigation.goBack()}
-          style={{ marginTop: 24, marginBottom: 56 }}
-        >
-          Go Back
-        </Button>
       </ScrollView>
     )
   }
@@ -127,10 +129,10 @@ class PostDetail extends Component {
 
 PostDetail.propTypes = {
   styles: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
+  // navigation: PropTypes.object.isRequired,
 }
 
-export default withStyles(({
+const PostDetailWithStyles = withStyles(({
   color, family, fontSize, wWidth, wHeight,
 }) => ({
   container: {
@@ -191,3 +193,15 @@ export default withStyles(({
     color: color.alto,
   },
 }))(PostDetail)
+
+export default graphql(getPostById, {
+  options: (props) => {
+    const params = get(props, 'navigation.state.params', {})
+    console.log('PRESTES A JORGAR OS PARAMS AQUI ', params.postId)
+    return ({
+      variables: {
+        id: params.postId,
+      },
+    })
+  },
+})(PostDetailWithStyles)

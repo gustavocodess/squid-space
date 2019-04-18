@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import cuid from 'cuid'
-import { StyleSheet, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList, Text } from 'react-native'
+import { graphql } from 'react-apollo'
+import PropTypes from 'prop-types'
+import { getPostsQuery } from '../../queries/post'
 
 import FeedCard from '../../ui/FeedCard'
-
-import cards from './mock'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#eee',
   },
@@ -25,26 +25,44 @@ const styles = StyleSheet.create({
   },
 })
 
-export default class Feed extends Component {
+class Feed extends Component {
   state = {}
 
+  renderPosts = () => {
+    const { data } = this.props
+    if (data.loading) {
+      return <Text>Buscando...</Text>
+    }
+    return (
+      <FlatList
+        data={data.posts.map(item => ({ ...item, key: cuid() }))}
+        renderItem={({ item }) => (
+          <FeedCard
+            postId={item.id}
+            title={item.title}
+            description={item.description}
+            mediaType={item.type}
+            author={item.postCreator}
+            date={item.createdAt}
+            key={cuid()}
+          />
+        )}
+      />
+    )
+  }
+
   render() {
+    console.log('FEED PROPS HERE ', this.props)
     return (
       <View style={styles.container}>
-        <FlatList
-          data={cards.map(item => ({ ...item, key: cuid() }))}
-          renderItem={({ item }) => (
-            <FeedCard
-              title={item.title}
-              description={item.description}
-              mediaType={item.type}
-              author={item.author}
-              date={item.date}
-              key={cuid()}
-            />
-          )}
-        />
+        {this.renderPosts()}
       </View>
     )
   }
 }
+
+Feed.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export default graphql(getPostsQuery)(Feed)

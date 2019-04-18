@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import cuid from 'cuid'
 import { IconButton } from 'react-native-paper'
 import TrackPlayer from 'react-native-track-player'
+import Slider from 'react-native-slider'
 import { withStyles } from '../styles'
 
 const audio = require('../assets/images/headphones.png')
@@ -29,29 +30,67 @@ const track = {
 }
 
 class AudioPlayer extends Component {
-  state = {}
-
+  state = {
+    paused: false,
+    positionInSeconds: 0,
+    trackPosition: 0,
+  }
 
   componentDidMount() {
     this.onTrackChange = TrackPlayer.addEventListener('playback-track-changed', async (data) => {
       // const changedTrack = await TrackPlayer.getTrack(data.nextTrack)
       // this.setState({ trackTitle: changedTrack.title })
+      // console.log('TRACK DATA CHANGED ')
     })
     TrackPlayer.setupPlayer().then(async () => {
       // Adds a track to the queue
       await TrackPlayer.add(track)
+      await this.startTimer()
       // Starts playing it
+      // TrackPlayer.play()
       TrackPlayer.play()
     })
   }
 
   componentWillUnmount() {
     // Removes the event handler
+    TrackPlayer.stop()
     this.onTrackChange.remove()
+    clearInterval(this.timer)
+  }
+
+  startTimer = async () => {
+    this.timer = await setInterval(async () => {
+      const duration = await TrackPlayer.getDuration()
+      if (!this.state.duration) {
+        this.setState(() => ({
+          duration,
+        }))
+      }
+      const position = await TrackPlayer.getPosition()
+      this.setState(() => ({
+        positionInSeconds: position,
+        trackPosition: 0.1 || Number((position / duration).toFixed(3)),
+      }))
+      if (this.state.positionInSeconds + 1 >= duration) {
+        console.log('FUCKING HERE ', this.state.positionInSeconds, duration)
+        this.setState({
+          positionInSeconds: 0,
+          trackPosition: 0.1,
+        }, async () => {
+          await TrackPlayer.reset()
+        })
+      }
+    }, 1000)
+  }
+
+  pauseTimer = () => {
+    clearInterval(this.timer)
   }
 
   handlePlayPause = async () => {
     const state = await TrackPlayer.getState()
+    console.log('KDSPODKSAPODASKOP AQUI ', state)
     if (state === 'playing') {
       TrackPlayer.pause()
       this.setState({
@@ -66,6 +105,7 @@ class AudioPlayer extends Component {
   }
 
   render() {
+    console.log('PLAYER STATE ', this.state)
     const {
       styles,
       theme,
@@ -87,7 +127,7 @@ class AudioPlayer extends Component {
             icon="replay-10"
             color={theme.color.secLighter}
             size={36}
-            onPress={() => console.log('Pressed')}
+            onPress={() => TrackPlayer.seekTo(this.state.positionInSeconds - 10)}
             style={{ marginLeft: 16 }}
           />
           <IconButton
@@ -101,8 +141,23 @@ class AudioPlayer extends Component {
             icon="forward-10"
             color={theme.color.secLighter}
             size={36}
-            onPress={() => console.log('Pressed')}
+            onPress={() => TrackPlayer.seekTo(this.state.positionInSeconds + 10)}
             style={{ marginRight: 16 }}
+          />
+        </View>
+        <View style={styles.sliderContainer}>
+          <Slider
+            value={this.state.trackPosition}
+            onValueChange={(value) => {
+              TrackPlayer.seekTo(value * this.state.duration)
+            }}
+            minimumTrackTintColor="#B3A53C"
+            maximumTrackTintColor="#FFF5A8"
+            thumbTintColor="#B3A53C"
+            thumbStyle={{
+              height: 14,
+              width: 14,
+            }}
           />
         </View>
       </View>
@@ -144,6 +199,15 @@ export default withStyles(({
     position: 'relative',
     alignSelf: 'stretch',
     margin: 16,
+    marginBottom: 0,
+    paddingBottom: 0,
+    height: 76,
   },
-
+  sliderContainer: {
+    marginLeft: 10,
+    marginRight: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    height: 12,
+  },
 }))(AudioPlayer)

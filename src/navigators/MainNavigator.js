@@ -5,7 +5,8 @@ import FeedNavigator from './FeedNavigator'
 import Notifications from '../screens/Notifications'
 import Profile from '../screens/Profile'
 
-const BottomNativation = createMaterialBottomTabNavigator({
+
+export const Navigator = createMaterialBottomTabNavigator({
   Feed: {
     screen: FeedNavigator,
   },
@@ -15,4 +16,5 @@ const BottomNativation = createMaterialBottomTabNavigator({
   initialRouteName: 'Feed',
 })
 
-export default createAppContainer(BottomNativation)
+
+export default createAppContainer(Navigator)
