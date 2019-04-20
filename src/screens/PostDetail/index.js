@@ -33,13 +33,13 @@ class PostDetail extends Component {
   }
 
   renderMedia = () => {
-    const { styles } = this.props
+    const { styles, data } = this.props
     const mediaType = get(this.props, 'navigation.state.params.mediaType', '')
     if (mediaType === 'VIDEO') {
       return (
         <YouTube
           apiKey={Config.YOUTUBE_API_KEY}
-          videoId="KVZ-P-ZI6W4"
+          videoId={get(data, 'post.videoUrl', '')}
           play
           // fullscreen
           loop
@@ -54,15 +54,15 @@ class PostDetail extends Component {
       )
     }
     if (mediaType === 'BOOK') {
-      const source = { uri: 'http://samples.leanpub.com/thereactnativebook-sample.pdf', cache: true }
+      const source = { uri: get(data, 'post.bookUrl', ''), cache: true }
       return (
         <Pdf
           source={source}
           onLoadComplete={(numberOfPages, filePath) => {
-            console.log(`number of pages: ${numberOfPages}`)
+            // console.log(`number of pages: ${numberOfPages}`)
           }}
           onPageChanged={(page, numberOfPages) => {
-            console.log(`current page: ${page}`)
+            // console.log(`current page: ${page}`)
           }}
           onError={(error) => {
             console.log(error)
@@ -73,7 +73,9 @@ class PostDetail extends Component {
     }
     if (mediaType === 'AUDIO') {
       return (
-        <AudioPlayer />
+        <AudioPlayer
+          audioUrl={get(data, 'post.audioUrl', '')}
+        />
       )
     }
     if (mediaType === 'IMAGE') {
@@ -129,7 +131,7 @@ class PostDetail extends Component {
 
 PostDetail.propTypes = {
   styles: PropTypes.object.isRequired,
-  // navigation: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 }
 
 const PostDetailWithStyles = withStyles(({
@@ -141,7 +143,6 @@ const PostDetailWithStyles = withStyles(({
     padding: 16,
     backgroundColor: color.white,
     position: 'relative',
-    flex: 1,
   },
   videoContainer: {
     alignSelf: 'stretch',
@@ -151,7 +152,7 @@ const PostDetailWithStyles = withStyles(({
   },
   bookContainer: {
     width: wWidth * 0.92,
-    height: wHeight * 0.5,
+    height: wHeight * 0.45,
     backgroundColor: '#e9e9e9',
     borderRadius: 3,
   },

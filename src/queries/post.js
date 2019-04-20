@@ -2,8 +2,8 @@ import { gql } from 'apollo-boost'
 
 
 export const getPostsQuery = gql`
-  {
-    posts {
+  query {
+    posts (orderBy: createdAt_DESC){
       createdAt
       title
       id
@@ -20,7 +20,7 @@ export const getPostsQuery = gql`
 
 export const getPostById = gql`
   query GetPost($id: ID) {
-    post(id: $id) {
+    post(where: { id: $id }) {
       status
       updatedAt
       createdAt
@@ -39,6 +39,7 @@ export const getPostById = gql`
         size
         mimeType
       }
+      bookUrl
       videoUrl
       audioUrl
       creationDate
