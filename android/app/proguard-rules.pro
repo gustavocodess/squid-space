@@ -15,3 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+
+# FIREBASE FOR USING minifyEnabled true (https://rnfirebase.io/docs/v5.x.x/installation/android)
+-keep class io.invertase.firebase.** { *; }
+-dontwarn io.invertase.firebase.**

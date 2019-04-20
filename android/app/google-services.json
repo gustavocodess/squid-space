@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1019819311965",
+    "firebase_url": "https://squidspace.firebaseio.com",
+    "project_id": "squidspace",
+    "storage_bucket": "squidspace.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019819311965:android:4552a468b535444b",
+        "android_client_info": {
+          "package_name": "com.squidspace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019819311965-o5gqdtt5t1cfpph6aq7pdu2hev1vj6cp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjv15Q4HGwx2KOYXSA818SKmRIo5LQCqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019819311965-o5gqdtt5t1cfpph6aq7pdu2hev1vj6cp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
