@@ -198,7 +198,6 @@ const PostDetailWithStyles = withStyles(({
 export default graphql(getPostById, {
   options: (props) => {
     const params = get(props, 'navigation.state.params', {})
-    console.log('PRESTES A JORGAR OS PARAMS AQUI ', params.postId)
     return ({
       variables: {
         id: params.postId,

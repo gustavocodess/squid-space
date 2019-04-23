@@ -3,13 +3,36 @@ import { Text, View } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Video from 'react-native-video'
+import firebase from 'react-native-firebase'
+import { graphql } from 'react-apollo'
 import PropTypes from 'prop-types'
+import { addUser } from '../../queries/user'
 import { withStyles } from '../../styles'
 
 const backgroundVideo = require('../../assets/videos/register-background.mp4')
 
+const Auth = firebase.auth()
+
 class UserRegister extends Component {
   state = {}
+
+  handleRegister = () => {
+    Auth.createUserWithEmailAndPassword(
+      'gustavo7@email.com',
+      'mudar1234',
+    ).then((result) => {
+      console.log('RETORNO DE CRIAR USUARIO ', result)
+      this.props.addUser({
+        variables: {
+          name: 'Gustavo Garcia',
+          email: 'gustavo@email.com',
+        },
+        // refetchQueries: [{ query: getBooksQuery }]
+      })
+    }).catch((err) => {
+      console.log('auth error ', err)
+    })
+  }
 
   render() {
     const { styles, navigation } = this.props
@@ -66,7 +89,7 @@ class UserRegister extends Component {
         <Button
           icon=""
           mode="contained"
-          onPress={() => console.log('Pressed')}
+          onPress={this.handleRegister}
           style={styles.registerButton}
         >
           Cadastrar
@@ -88,9 +111,10 @@ class UserRegister extends Component {
 UserRegister.propTypes = {
   styles: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
+  addUser: PropTypes.func.isRequired,
 }
 
-export default withStyles(({
+const UserRegisterWithStyles = withStyles(({
   color, wWidth, family, fontSize,
 }) => ({
   container: {
@@ -157,3 +181,5 @@ export default withStyles(({
     fontSize: fontSize.f3,
   },
 }))(UserRegister)
+
+export default graphql(addUser, { name: 'addUser' })(UserRegisterWithStyles)
